@@ -1,0 +1,33 @@
+@import '../styles/variables';
+
+ 
+
+.layoutContainer {
+  display: grid;
+  grid-template-columns: 180px 1fr 420px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-color: $color-background;
+  
+  // Mobile
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+  }
+}
+
+ 
+.mainContent {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  overflow-y: auto;
+  padding: $spacing-xl;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    padding: $spacing-md;
+  }
+}
+
+ 

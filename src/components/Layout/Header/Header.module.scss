@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+// Header styles
+
+.header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-color: $color-background;
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-dropdown;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+}

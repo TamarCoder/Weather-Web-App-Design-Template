@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+
+
+.rightSidebar {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 1px solid $color-border;
+  overflow-y: auto;
+  
+  @media (max-width: $breakpoint-lg) {
+    display: none; // Hide on mobile or make it collapsible
+  }
+}
