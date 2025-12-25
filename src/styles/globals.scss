@@ -1,0 +1,250 @@
+@import './variables';
+
+// ===================================
+// Google Font Import - Inter
+// ===================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ===================================
+// Reset & Base Styles
+// ===================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $color-text;
+  background-color: $color-background;
+  min-height: 100vh;
+}
+
+// ===================================
+// Typography
+// ===================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  margin-bottom: $spacing-lg;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  margin-bottom: $spacing-md;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-md;
+}
+
+h4 {
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-sm;
+}
+
+h5 {
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-sm;
+}
+
+h6 {
+  font-size: $font-size-base;
+  margin-bottom: $spacing-sm;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+
+  &:active {
+    color: $color-primary-active;
+  }
+}
+
+// ===================================
+// Button Styles
+// ===================================
+
+button {
+  font-family: $font-family-primary;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all $transition-fast;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  border-radius: $border-radius-md;
+  transition: all $transition-fast;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-text;
+  
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+    box-shadow: $shadow-md;
+  }
+  
+  &:active:not(:disabled) {
+    background-color: $color-primary-active;
+  }
+  
+  &:disabled {
+    background-color: $color-primary-disabled;
+  }
+}
+
+.btn-secondary {
+  background-color: $color-secondary;
+  color: $color-text;
+  
+  &:hover:not(:disabled) {
+    background-color: $color-secondary-hover;
+    box-shadow: $shadow-md;
+  }
+  
+  &:active:not(:disabled) {
+    background-color: $color-secondary-active;
+  }
+  
+  &:disabled {
+    background-color: $color-secondary-disabled;
+  }
+}
+
+// ===================================
+// Form Styles
+// ===================================
+
+input,
+textarea,
+select {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  color: $color-text;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-md;
+  width: 100%;
+  transition: all $transition-fast;
+  
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  }
+  
+  &:hover:not(:disabled) {
+    border-color: $color-primary-hover;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  
+  &::placeholder {
+    color: $color-secondary;
+  }
+}
+
+label {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+  margin-bottom: $spacing-xs;
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+}
+
+.form-error {
+  color: $color-error;
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+}
+
+// ===================================
+// Container
+// ===================================
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// ===================================
+// Utility Classes
+// ===================================
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+.p-sm { padding: $spacing-sm; }
+.p-md { padding: $spacing-md; }
+.p-lg { padding: $spacing-lg; }
+.p-xl { padding: $spacing-xl; }
