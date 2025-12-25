@@ -8,6 +8,8 @@
   background-color: $color-background;
   border-bottom: 1px solid $color-border;
   position: sticky;
+  display: flex;
+  align-items: center;
   top: 0;
   z-index: $z-index-dropdown;
 

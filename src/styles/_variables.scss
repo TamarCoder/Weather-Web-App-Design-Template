@@ -4,14 +4,14 @@
 
 // მთავარი ფერები
 $color-background: #000000;           // შავი ფონი
-$color-primary: #1e3a8a;             // მიდნაითლურჯი (dark blue)
+$color-primary: #222d3d;             // მუქი ლურჯი-ნაცრისფერი (dark blue-gray)
 $color-text: #ffffff;                 // თეთრი ტექსტი
 $color-secondary: #6b7280;            // ნაცრისფერი (gray)
 
 // Primary ფერის ვარიაციები
-$color-primary-hover: #1e40af;        // hover მდგომარეობა
-$color-primary-active: #1e3a70;       // active მდგომარეობა
-$color-primary-disabled: #1e3a8a80;   // disabled (50% opacity)
+$color-primary-hover: #2d3e52;        // hover მდგომარეობა (lighter)
+$color-primary-active: #1a2330;       // active მდგომარეობა (darker)
+$color-primary-disabled: #222d3d80;   // disabled (50% opacity)
 
 // Secondary ფერის ვარიაციები
 $color-secondary-hover: #9ca3af;      // hover მდგომარეობა
