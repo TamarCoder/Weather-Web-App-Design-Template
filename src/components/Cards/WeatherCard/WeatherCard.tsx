@@ -1,10 +1,12 @@
 import styles from "./WeatherCard.module.scss";
+import { SkeletonLoader } from "@/components/UI";
 
 interface WeatherCardProps {
   city: string;
   date: string;
   temperature: number;
   weatherIcon: string;
+  isLoading?: boolean;
 }
 
 export default function WeatherCard({
@@ -12,7 +14,12 @@ export default function WeatherCard({
   date,
   temperature,
   weatherIcon,
+  isLoading = false,
 }: WeatherCardProps) {
+  if (isLoading) {
+    return <SkeletonLoader variant="card" />;
+  }
+
   return (
     <div className={styles.weatherCard}>
       <div className={styles.weatherInfo}>

@@ -1,7 +1,8 @@
 @import "../../../styles/variables";
 
-// Header styles
-
+// ===================================
+// Navigation Component
+// ===================================
 .navigation {
   display: flex;
   align-items: center;
@@ -23,20 +24,96 @@
   width: 60px;
   height: 60px;
   background-color: $color-primary-hover;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   padding: 8px 4px;
   cursor: pointer;
-  transition: background-color $transition-fast;
+  position: relative;
+  transition: all $transition-normal;
+  border: 2px solid transparent;
 
+  // Hover effect
   &:hover {
     background-color: $color-primary-active;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+    
+    .icon {
+      transform: scale(1.1);
+    }
+
+    // Tooltip
+    &::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 75px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.9);
+      color: $color-text;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: $font-weight-medium;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      animation: tooltipFadeIn 0.2s ease-out forwards;
+      z-index: 1000;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 65px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      animation: tooltipFadeIn 0.2s ease-out forwards;
+      z-index: 1000;
+    }
+  }
+
+  // Active state
+  &.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.3));
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+
+    .icon {
+      color: #60a5fa;
+    }
+
+    .label {
+      color: #60a5fa;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  // Click animation
+  &:active {
+    transform: scale(0.95);
+    box-shadow: $shadow-sm;
   }
 }
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
 .label {
   font-size: 10px;
   color: $color-text;
@@ -44,10 +121,12 @@
   line-height: 1.1;
   white-space: nowrap;
   margin: 0;
+  transition: all $transition-fast;
 }
 
 .icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
+  transition: all $transition-fast;
 }

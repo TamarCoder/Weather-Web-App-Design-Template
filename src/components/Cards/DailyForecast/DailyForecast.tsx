@@ -1,4 +1,5 @@
 import styles from "./DailyForecast.module.scss";
+import { SkeletonLoader } from "@/components/UI";
 
 interface DailyItem {
   day: string;
@@ -9,9 +10,23 @@ interface DailyItem {
 
 interface DailyForecastProps {
   items: DailyItem[];
+  isLoading?: boolean;
 }
 
-export default function DailyForecast({ items }: DailyForecastProps) {
+export default function DailyForecast({ items, isLoading = false }: DailyForecastProps) {
+  if (isLoading) {
+    return (
+      <div className={styles.dailyForecast}>
+        <div className={styles.sectionTitle}>
+          <h3>7-Day Forecast</h3>
+        </div>
+        <div className={styles.dailyItems}>
+          <SkeletonLoader variant="daily" count={7} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.dailyForecast}>
       <div className={styles.sectionTitle}>

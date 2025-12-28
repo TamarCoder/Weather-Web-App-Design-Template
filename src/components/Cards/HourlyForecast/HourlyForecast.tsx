@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import styles from "./HourlyForecast.module.scss";
+import { SkeletonLoader } from "@/components/UI";
 
 interface HourlyItem {
   time: string;
@@ -9,9 +10,23 @@ interface HourlyItem {
 
 interface HourlyForecastProps {
   items: HourlyItem[];
+  isLoading?: boolean;
 }
 
-export default function HourlyForecast({ items }: HourlyForecastProps) {
+export default function HourlyForecast({ items, isLoading = false }: HourlyForecastProps) {
+  if (isLoading) {
+    return (
+      <div className={styles.hourlyForecast}>
+        <div className={styles.sectionTitle}>
+          <h3>Today's Forecast</h3>
+        </div>
+        <div className={styles.hourlyItems}>
+          <SkeletonLoader variant="hourly" count={3} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.hourlyForecast}>
       <div className={styles.sectionTitle}>

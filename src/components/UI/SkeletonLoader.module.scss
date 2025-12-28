@@ -1,0 +1,180 @@
+@import "../../styles/variables";
+
+// ===================================
+// Skeleton Loader Component
+// ===================================
+
+.skeletonContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// Base skeleton animation
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@mixin skeleton-base {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: 8px;
+}
+
+// Card variant
+.skeletonCard {
+  background-color: $color-primary-hover;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skeletonHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonTitle {
+  @include skeleton-base;
+  height: 24px;
+  width: 60%;
+}
+
+.skeletonSubtitle {
+  @include skeleton-base;
+  height: 16px;
+  width: 40%;
+}
+
+.skeletonContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.skeletonCircle {
+  @include skeleton-base;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.skeletonText {
+  @include skeleton-base;
+  height: 20px;
+  width: 80%;
+}
+
+.skeletonTextShort {
+  @include skeleton-base;
+  height: 16px;
+  width: 50%;
+}
+
+// Hourly forecast variant
+.skeletonHourly {
+  background-color: $color-primary-hover;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 80px;
+}
+
+.skeletonTime {
+  @include skeleton-base;
+  height: 14px;
+  width: 50px;
+}
+
+.skeletonIcon {
+  @include skeleton-base;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.skeletonTemp {
+  @include skeleton-base;
+  height: 18px;
+  width: 40px;
+}
+
+// Daily forecast variant
+.skeletonDaily {
+  background-color: $color-primary-hover;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeletonDay {
+  @include skeleton-base;
+  height: 16px;
+  width: 60px;
+}
+
+.skeletonTempRange {
+  @include skeleton-base;
+  height: 16px;
+  width: 70px;
+}
+
+// Search variant
+.skeletonSearch {
+  background-color: $color-primary-hover;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeletonIconSmall {
+  @include skeleton-base;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeletonInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonCity {
+  @include skeleton-base;
+  height: 16px;
+  width: 80px;
+}
+
+.skeletonTempSmall {
+  @include skeleton-base;
+  height: 20px;
+  width: 50px;
+  flex-shrink: 0;
+}

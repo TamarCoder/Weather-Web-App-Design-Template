@@ -1,4 +1,5 @@
 import styles from "./MoreSuggestions.module.scss";
+import { SkeletonLoader } from "@/components/UI";
 
 interface SuggestionCard {
   id: number;
@@ -7,9 +8,21 @@ interface SuggestionCard {
 
 interface MoreSuggestionsProps {
   cards: SuggestionCard[];
+  isLoading?: boolean;
 }
 
-export default function MoreSuggestions({ cards }: MoreSuggestionsProps) {
+export default function MoreSuggestions({ cards, isLoading = false }: MoreSuggestionsProps) {
+  if (isLoading) {
+    return (
+      <section className={styles.moreSuggestions}>
+        <h1 className={styles.sectionTitle}>More Suggestions</h1>
+        <div className={styles.cardsContainer}>
+          <SkeletonLoader variant="search" count={2} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.moreSuggestions}>
       <h1 className={styles.sectionTitle}>More Suggestions</h1>

@@ -1,4 +1,5 @@
 import styles from "./RecentlySearch.module.scss";
+import { SkeletonLoader } from "@/components/UI";
 
 interface SearchCard {
   id: number;
@@ -10,9 +11,21 @@ interface SearchCard {
 
 interface RecentlySearchProps {
   cards: SearchCard[];
+  isLoading?: boolean;
 }
 
-export default function RecentlySearch({ cards }: RecentlySearchProps) {
+export default function RecentlySearch({ cards, isLoading = false }: RecentlySearchProps) {
+  if (isLoading) {
+    return (
+      <section className={styles.recentlySearch}>
+        <h1 className={styles.sectionTitle}>Recently Search</h1>
+        <div className={styles.cardsContainer}>
+          <SkeletonLoader variant="search" count={3} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.recentlySearch}>
       <h1 className={styles.sectionTitle}>Recently Search</h1>
