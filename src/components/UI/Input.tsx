@@ -1,34 +1,82 @@
-/**
- * INPUT COMPONENT
- * 
- * რას უნდა შეიცავდეს:
- * - Reusable input field
- * - Label support
- * - Error message display
- * - Icon support (left/right)
- * - Different input types (text, email, search, etc.)
- * 
- * რას აკეთებს:
- * - input field-ების უნიფიცირება
- * - SCSS სტილებთან ინტეგრაცია
- * - Validation error-ების ჩვენება
- * - Focus, hover states მართვა
- * 
- * სად იმპორტდება:
- * - SearchCity (ქალაქის ძიება)
- * - Forms (თუ გჭირდება)
- * 
- * რა props უნდა მიიღოს:
- * - label: string (optional)
- * - type: string (default: 'text')
- * - placeholder: string
- * - value: string
- * - onChange: (value: string) => void
- * - error: string (optional)
- * - icon: ReactNode (optional)
- * - iconPosition: 'left' | 'right'
- * - disabled: boolean
- * 
- * რა icons დაგჭირდება:
- * - lucide-react: Search, AlertCircle
- */
+'use client'
+import React, { useState } from "react";
+import styles from "./Input.module.scss"
+import { FieldValues, Path } from "react-hook-form";
+import { InputProps } from "@/types/input.type";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
+
+ 
+export const Input = <TFormValues extends FieldValues = FieldValues>({
+  type,
+  name,
+  placeholder,
+  error,
+  disabled = false,
+  label,
+  register,
+  icon,
+  iconPosition,
+  className,
+}: InputProps<TFormValues>) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const inputType = type === "password" && showPassword ? "text" : type;
+  const isPasswordField = type === "password";
+  
+  const hasLeftIcon = icon && iconPosition === "left";
+  const hasRightIcon = (icon && iconPosition === "right") || isPasswordField;
+  
+  const inputFieldClasses = `${styles.inputField} ${
+    className ? styles[className] : ""
+  } ${
+    error ? styles.error : ""
+  } ${disabled ? styles.disabled : ""} ${
+    hasLeftIcon ? styles.withLeftIcon : ""
+  } ${hasRightIcon ? styles.withRightIcon : ""}`;
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  return (
+    <div className={styles.inputWrapper}>
+      {label && (
+        <label htmlFor={name} className={styles.label}>
+          {label}
+        </label>
+      )}
+      <div className={styles.inputItem}>
+        {icon && iconPosition === "left" && (
+          <span className={styles.leftSide}>{icon}</span>
+        )}
+        <input
+          id={name}
+          type={inputType}
+          placeholder={placeholder}
+          disabled={disabled}
+          className={inputFieldClasses}
+          {...(register && register(name as Path<TFormValues>))}
+        />
+        {icon && iconPosition === "right" && !isPasswordField && (
+          <span className={styles.rightSide}>{icon}</span>
+        )}
+        {isPasswordField && (
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            className={styles.passwordToggle}
+            disabled={disabled}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? (
+              <AiOutlineEye className={styles.icon} />
+            ) : (
+              <AiOutlineEyeInvisible className={styles.icon} />
+            )}
+          </button>  
+        )}
+      </div>
+      {error && <div className={styles.errorMessage}>{error}</div>}
+    </div>
+  );
+};

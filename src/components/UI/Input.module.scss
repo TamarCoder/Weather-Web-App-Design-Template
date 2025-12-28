@@ -1,3 +1,123 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
-// Input styles
+.inputWrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+.inputItem {
+  display: flex;
+  border-radius: $border-radius-full;
+  gap: $spacing-xs;
+  border: none;
+  position: relative;
+  align-items: center;
+}
+.inputField {
+  width: 100%;
+  height: 50px;
+  border-radius: $border-radius-lg;
+  background-color: $color-primary;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  &.withLeftIcon {
+    padding-left: 60px;
+  }
+
+  &.withRightIcon {
+    padding-right: 60px;
+  }
+
+  &.error {
+    border-color: $color-error !important;
+  }
+}
+.label {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  height: 30px;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+.leftSide {
+  position: absolute;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightSide {
+  position: absolute;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $color-text;
+  transition: color $transition-fast ease;
+
+  &:hover {
+    color: $color-warning;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+//  custom classes
+
+.outlineInput {
+  width: 100%;
+  height: 40px;
+  border: 1px solid $color-warning;
+  border-radius: $border-radius-full;
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadow-sm;
+  }
+
+  &.error {
+    border-color: $color-error !important;
+  }
+}
+
+.fillInput {
+  width: 100%;
+  height: 40px;
+  border-radius: $border-radius-full;
+  background-color: $color-primary;
+  border: none;
+
+  &.error {
+    border: 1px solid $color-error !important;
+  }
+}

@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
-import styles from "./layout.module.scss";
-import SidebarLeft from "@/components/Layout/SideBar/Sidebar";
-import Header from "@/components/Layout/Header/Header";
-import RightSidebar from "@/components/Layout/RightSidebar/RightSidebar";
-import Footer from "@/components/Layout/Footer/Footer";
-// import Header from '@/components/Layout/Header'
-// import Sidebar from '@/components/Layout/Sidebar'
-// import Footer from '@/components/Layout/Footer'
+import styles from './layout.module.scss'
+import Header from '@/components/Header/Header'
+import LeftSidebar from '@/components/LeftSidebar/LeftSidebar'
+import RightSidebar from '@/components/RightSidebar/RightSidebar'
+import Footer from '@/components/Footer/Footer'
 
 export const metadata: Metadata = {
   title: "Weather Dashboard | Real-time Weather Information",
@@ -57,11 +54,15 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className={styles.layoutContainer}>
-          <SidebarLeft />
-          <Header />
-          <main className={styles.mainContent}>{children}</main>
+          <LeftSidebar />
+          
+          <div className={styles.mainWrapper}>
+            <Header />
+            <main className={styles.mainContent}>{children}</main>
+            <Footer />
+          </div>
+
           <RightSidebar />
-          <Footer />
         </div>
       </body>
     </html>

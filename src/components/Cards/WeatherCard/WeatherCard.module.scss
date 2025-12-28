@@ -1,0 +1,145 @@
+@import "../../../styles/variables.scss";
+
+// ===================================
+// Weather Card (Main Card)
+// ===================================
+.weatherCard {
+  width: 100%;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 45, 61, 0.4) 0%,
+    rgba(34, 45, 61, 0.1) 100%
+  );
+  border-radius: 16px;
+  box-shadow: $shadow-md;
+  transition: $transition-normal;
+  animation: fadeIn 0.6s ease-out;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ===================================
+// Weather Info Section
+// ===================================
+.weatherInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.locationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cityName {
+  & h3 {
+    display: block;
+    font-size: 42px;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.5px;
+    font-family: "Poppins", sans-serif;
+    color: $color-text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: slideInLeft 0.7s ease-out;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.dateInfo {
+  & p {
+    display: block;
+    font-size: 15px;
+    font-weight: $font-weight-normal;
+    letter-spacing: 0.3px;
+    font-family: "Poppins", sans-serif;
+    color: $color-secondary;
+    animation: slideInLeft 0.8s ease-out;
+  }
+}
+
+.temperature {
+  & p {
+    font-size: 56px;
+    font-weight: $font-weight-bold;
+    font-family: "Poppins", sans-serif;
+    color: $color-text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    animation: scaleIn 0.8s ease-out;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ===================================
+// Weather Icon Section
+// ===================================
+.weatherIcon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.weatherImage {
+  width: 180px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  transition: $transition-normal;
+
+  &:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+  }
+}

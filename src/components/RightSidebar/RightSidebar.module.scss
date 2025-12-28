@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+// ===================================
+// Right Sidebar Main Container
+// ===================================
+.rightSidebar {
+  width: 600px;
+  padding: 30px;
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ===================================
+// Container
+// ===================================
+.container {
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

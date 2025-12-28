@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 15px;
+}
+
+// ზედა სექცია - 3 ქარდი ერთმანეთის ქვემოთ
+.topSection {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+
+  .cardPlaceholder {
+    border-radius: 30px;
+    background-color: $color-primary;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.cardsContainer{
+    display: flex;  
+    flex-direction: column;
+    gap: 15px;
+}
+
+// ქვედა სექცია - 2 პატარა ქარდი გვერდიგვერდ
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+}
+
+.smallCardPlaceholder {
+    max-width: 250px;
+    width: 100%;
+    height: 300px;
+    background-color: $color-primary;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.cards{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+
+
+.sectionTitle{
+    font-size: 20px;
+}

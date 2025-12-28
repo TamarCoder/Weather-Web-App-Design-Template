@@ -1,0 +1,123 @@
+@import "../../../styles/variables.scss";
+
+// ===================================
+// Daily Forecast Section
+// ===================================
+.dailyForecast {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionTitle {
+  width: 100%;
+
+  & h3 {
+    font-size: 20px;
+    font-weight: $font-weight-semibold;
+    font-family: "Poppins", sans-serif;
+    color: $color-text;
+    letter-spacing: 0.3px;
+  }
+}
+
+.dailyItems {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 16px;
+}
+
+.dailyItem {
+  width: calc(33.33% - 10px);
+  min-width: 75px;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(34, 45, 61, 0.25);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: $shadow-sm;
+  border: 1px solid transparent;
+  transition: $transition-normal;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: $transition-slow;
+  }
+
+  &:hover {
+    background: rgba(34, 45, 61, 0.4);
+    box-shadow: $shadow-md;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+.dayName {
+  font-size: 13px;
+  font-weight: $font-weight-medium;
+  font-family: "Poppins", sans-serif;
+  color: $color-secondary;
+  transition: $transition-fast;
+
+  .dailyItem:hover & {
+    color: $color-text;
+  }
+}
+
+.dailyIcon {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: $transition-normal;
+
+  .dailyItem:hover & {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+.dailyTemp {
+  font-size: 14px;
+  font-weight: $font-weight-semibold;
+  font-family: "Poppins", sans-serif;
+  color: $color-text;
+}

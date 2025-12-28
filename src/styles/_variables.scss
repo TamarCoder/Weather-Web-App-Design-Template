@@ -89,9 +89,10 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 
 // Transitions
 // ===================================
 
+
 $transition-fast: 150ms ease-in-out;
 $transition-normal: 300ms ease-in-out;
-$transition-slow: 500ms ease-in-out;
+$transition-slow: all 500ms ease;
 
 // ===================================
 // Z-index
