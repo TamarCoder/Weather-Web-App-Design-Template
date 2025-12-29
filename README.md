@@ -14,7 +14,7 @@
 
 [Live Demo](#) · [Report Bug](../../issues) · [Request Feature](../../issues)
 
-![Weather Dashboard Preview](https://via.placeholder.com/800x400/1a1a2e/16c784?text=Weather+Dashboard+Preview)
+![Weather Dashboard Demo](demo.gif)
 
 </div>
 
