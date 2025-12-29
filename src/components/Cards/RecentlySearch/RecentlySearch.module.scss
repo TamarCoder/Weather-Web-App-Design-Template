@@ -28,6 +28,11 @@
   color: $color-text;
   margin-bottom: 20px;
   letter-spacing: 0.3px;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
 }
 
 .cardsContainer {
@@ -55,6 +60,14 @@
     border: 2px solid $color-primary;
     background: none;
   }
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    padding: 15px;
+    min-height: auto;
+    gap: 15px;
+    border-radius: 20px;
+  }
 }
 
 .weatherInfo {
@@ -62,6 +75,11 @@
   width: 100%;
   display: flex;
   align-items: center;
+  
+  @media (max-width: $breakpoint-md) {
+    max-width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .weatherIcon {
@@ -76,6 +94,16 @@
     height: 130px;
     object-fit: contain;
   }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 80px;
+    height: 80px;
+    
+    .icon {
+      width: 80px;
+      height: 80px;
+    }
+  }
 }
 
 .locationInfo {
@@ -86,17 +114,29 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  
+  @media (max-width: $breakpoint-md) {
+    height: auto;
+  }
 }
 
 .cityName {
   font-size: 30px;
   font-family: "Poppins", sans-serif;
   margin: 0;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 22px;
+  }
 }
 
 .time {
   font-size: 17px;
   font-family: "Poppins", sans-serif;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 14px;
+  }
 }
 
 .temperature {
@@ -113,6 +153,15 @@
     font-size: 35px;
     font-family: "Poppins", sans-serif;
     color: $color-text;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 80px;
+    height: auto;
+    
+    & h1 {
+      font-size: 28px;
+    }
   }
 }
 

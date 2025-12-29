@@ -7,6 +7,23 @@
   width: 600px;
   padding: 30px;
   animation: slideInRight 0.5s ease-out;
+  
+  @media (max-width: $breakpoint-xl) {
+    width: 400px;
+    padding: 20px;
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    width: 100%;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-background;
+    z-index: 1000;
+    overflow-y: auto;
+  }
 }
 
 @keyframes slideInRight {
@@ -29,4 +46,9 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 16px;
+    padding-top: 20px;
+  }
 }

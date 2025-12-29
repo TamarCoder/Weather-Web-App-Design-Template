@@ -14,13 +14,18 @@ export default function RecentlySearch() {
   const recentCities =  useStore((state) => state.recentCities);
   const setSelectedCity = useStore((state) => state.setSelectedCity);
   const toggleRightSidebar = useStore((state) => state.toggleRightSidebar);
+  const isRightSidebarOpen = useStore((state) => state.isRightSidebarOpen);
   const weatherCache = useStore((state) => state.weatherCache);
   const setForecastCache = useStore((state) => state.setForecastCache);
   const { fetchWeather, fetchForecast, isLoading } = useWeather();
 
   const handleCardClick = async (city: string) => {
     setSelectedCity(city);
-    toggleRightSidebar();
+    
+    // Only toggle if sidebar is closed
+    if (!isRightSidebarOpen) {
+      toggleRightSidebar();
+    }
     
     const forecastData = await fetchForecast(city);
     if (forecastData) {

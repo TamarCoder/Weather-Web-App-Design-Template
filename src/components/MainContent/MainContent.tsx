@@ -12,6 +12,7 @@ export default function MainContent() {
   const setWeatherCache = useStore((state) => state.setWeatherCache);
   const setSelectedCity = useStore((state) => state.setSelectedCity);
   const toggleRightSidebar = useStore((state) => state.toggleRightSidebar);
+  const isRightSidebarOpen = useStore((state) => state.isRightSidebarOpen);
   const addRecentCity = useStore((state) => state.addRecentCity);
   const { fetchWeather } = useWeather();
 
@@ -43,7 +44,11 @@ export default function MainContent() {
   const handleSuggestionClick = async (city: string) => {
     setSelectedCity(city);
     addRecentCity(city);
-    toggleRightSidebar();
+    
+    // Only toggle if sidebar is closed
+    if (!isRightSidebarOpen) {
+      toggleRightSidebar();
+    }
     
     // If not in cache, fetch it
     if (!weatherCache[city]) {

@@ -5,6 +5,11 @@
   flex-direction: column;
   gap: 10px;
   padding: 15px 15px;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 10px 10px;
+    gap: 8px;
+  }
 }
 
 // ზედა სექცია - 3 ქარდი ერთმანეთის ქვემოთ
@@ -24,12 +29,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: 15px;
+      min-height: 100px;
+      border-radius: 20px;
+    }
   }
 }
 .cardsContainer{
     display: flex;  
     flex-direction: column;
     gap: 15px;
+    
+    @media (max-width: $breakpoint-md) {
+      gap: 10px;
+    }
 }
 
 // ქვედა სექცია - 2 პატარა ქარდი გვერდიგვერდ
@@ -38,7 +53,11 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 10px;
+    gap: 15px;
+  }
 }
 
 .smallCardPlaceholder {
@@ -51,15 +70,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    @media (max-width: $breakpoint-md) {
+      max-width: 100%;
+      height: auto;
+      min-height: 200px;
+      padding: 15px;
+    }
   }
 .cards{
   display: flex;
   align-items: center;
   gap: 30px;
+  
+  @media (max-width: $breakpoint-lg) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 
 
 .sectionTitle{
     font-size: 20px;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 18px;
+    }
 }

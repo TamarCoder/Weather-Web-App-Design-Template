@@ -1,5 +1,11 @@
+@import '../styles/variables';
+
 .layoutContainer {
   display: flex;
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
 }
 
 .mainWrapper {
@@ -7,11 +13,20 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 0; // Prevents flex item overflow
+  
+  @media (max-width: $breakpoint-md) {
+    gap: 10px;
+  }
 }
 
 .mainContent {
   flex: 1;
   overflow: hidden;
+  
+  @media (max-width: $breakpoint-md) {
+    overflow: visible;
+  }
 }
 
  

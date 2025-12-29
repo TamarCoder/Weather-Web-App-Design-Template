@@ -8,6 +8,10 @@
   flex-direction: column;
   gap: 20px;
   animation: fadeIn 0.8s ease-out 0.2s both;
+  
+  @media (max-width: $breakpoint-md) {
+    gap: 15px;
+  }
 }
 
 @keyframes fadeIn {
@@ -31,6 +35,12 @@
     color: $color-text;
     letter-spacing: 0.3px;
   }
+  
+  @media (max-width: $breakpoint-md) {
+    & h3 {
+      font-size: 18px;
+    }
+  }
 }
 
 .dailyItems {
@@ -39,6 +49,11 @@
   flex-wrap: wrap;
   gap: 12px;
   row-gap: 16px;
+  
+  @media (max-width: $breakpoint-md) {
+    gap: 10px;
+    row-gap: 12px;
+  }
 }
 
 .dailyItem {
@@ -89,6 +104,16 @@
 
   &:active {
     transform: translateY(-2px);
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    width: calc(33.33% - 8px);
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: calc(50% - 5px);
+    min-width: 120px;
+    padding: 12px 8px;
   }
 }
 
