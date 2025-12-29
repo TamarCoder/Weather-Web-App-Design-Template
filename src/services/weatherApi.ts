@@ -1,30 +1,57 @@
-/**
- * WEATHER API SERVICE
- * 
- * რას უნდა შეიცავდეს:
- * - getCurrentWeather(city: string) - მიმდინარე ამინდი
- * - getForecast(city: string) - 5-დღიანი პროგნოზი
- * - getWeatherByCoordinates(lat, lon) - კოორდინატებით ამინდი
- * - Error handling
- * - Response type checking
- * 
- * რას აკეთებს:
- * - OpenWeatherMap API-ზე HTTP requests (axios-ით)
- * - constants/index.ts-დან API_CONFIG გამოყენება
- * - API response-ების TypeScript types-ზე mapping
- * - Error-ების დამუშავება და გასაგები messages
- * 
- * სად იმპორტდება:
- * - hooks/useWeather.ts - custom hook-ში
- * - store/useStore.ts - Zustand actions-ში (optional)
- * 
- * რა functions უნდა exports გაუკეთო:
- * - getCurrentWeather(city: string): Promise<CurrentWeatherResponse>
- * - getForecast(city: string): Promise<ForecastResponse>
- * - getWeatherByCoordinates(lat: number, lon: number): Promise<CurrentWeatherResponse>
- * 
- * რა packages დაგჭირდება:
- * - axios (HTTP client)
- * - types/weather.ts (response types)
- * - constants/index.ts (API_CONFIG)
- */
+import axios from "axios";
+import type { WeatherData, ForecastData } from "@/types/weather.types";
+
+const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+const BASE_URL = "https://api.openweathermap.org/data/2.5";
+
+if (!API_KEY) {
+  console.warn("NEXT_PUBLIC_OPENWEATHER_API_KEY is not defined");
+}
+
+const getCurrentWeather = async (city: string): Promise<WeatherData> => {
+  try {
+    const response = await axios.get<WeatherData>(
+      `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const message = error.response?.data?.message || "Failed to fetch weather data";
+      throw new Error(message);
+    }
+    throw new Error("Failed to fetch current weather data.");
+  }
+};
+
+const getForecast = async (city: string): Promise<ForecastData> => {
+  try {
+    const response = await axios.get<ForecastData>(
+      `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const message = error.response?.data?.message || "Failed to fetch forecast data";
+      throw new Error(message);
+    }
+    throw new Error("Failed to fetch weather forecast data.");
+  }
+};
+
+const getWeatherByCoordinates = async (lat: number, lon: number): Promise<WeatherData> => {
+  try {
+    const response = await axios.get<WeatherData>(
+      `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const message = error.response?.data?.message || "Failed to fetch weather data";
+      throw new Error(message);
+    }
+    throw new Error("Failed to fetch weather data by coordinates.");
+  }
+};
+
+export { getCurrentWeather, getForecast, getWeatherByCoordinates };
+ 

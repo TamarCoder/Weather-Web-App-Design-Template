@@ -2,6 +2,9 @@
 
 export interface InputProps<TFormValues extends FieldValues = FieldValues> {
   type: 'text' | 'password' | 'email' |'textarea' | 'search';
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onEnter?: () => void;
   name: string;
   placeholder: string;
   error?: string;

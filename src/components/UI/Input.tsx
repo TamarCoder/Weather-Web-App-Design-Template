@@ -18,6 +18,9 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
   icon,
   iconPosition,
   className,
+  value,
+  onChange,
+  onEnter,
 }: InputProps<TFormValues>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const inputType = type === "password" && showPassword ? "text" : type;
@@ -51,10 +54,17 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
         )}
         <input
           id={name}
+          value={value}
           type={inputType}
           placeholder={placeholder}
           disabled={disabled}
           className={inputFieldClasses}
+          onChange={onChange}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && onEnter) {
+              onEnter();
+            }
+          }}
           {...(register && register(name as Path<TFormValues>))}
         />
         {icon && iconPosition === "right" && !isPasswordField && (

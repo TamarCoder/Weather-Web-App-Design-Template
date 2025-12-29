@@ -1,32 +1,54 @@
+'use client'
 import styles from "./RightSidebar.module.scss";
 import { WeatherCard, HourlyForecast, DailyForecast } from "../Cards";
+import { useStore } from "@/store/useStore";
+import { getWeatherIcon } from "@/utils";
 
 export default function RightSidebar() {
-  // Mock data - შემდეგში API-დან მოვა
-  const hourlyData = [
-    { time: "Now", icon: "/images/Group2.png", temperature: 30 },
-    { time: "13:00", icon: "/images/Group2.png", temperature: 32 },
-    { time: "14:00", icon: "/images/Group2.png", temperature: 32 },
-  ];
+   
+  const [isRightSidebarOpen, selectedCity, weatherCache, forecastCache] = useStore((state) => [
+    state.isRightSidebarOpen,
+    state.selectedCity,
+    state.weatherCache,
+    state.forecastCache
+  ]);
+  
+  const weather = weatherCache[selectedCity || ''];
+  const forecast = forecastCache[selectedCity || ''];
+  
+  if(!isRightSidebarOpen || !selectedCity || !weather) {
+    return null;
+  }
 
-  const dailyData = [
-    { day: "Monday", icon: "/images/Group2.png", highTemp: 30, lowTemp: 21 },
-    { day: "Tuesday", icon: "/images/Group2.png", highTemp: 28, lowTemp: 19 },
-    { day: "Wednesday", icon: "/images/Group2.png", highTemp: 26, lowTemp: 18 },
-    { day: "Thursday", icon: "/images/Group2.png", highTemp: 27, lowTemp: 20 },
-    { day: "Friday", icon: "/images/Group2.png", highTemp: 29, lowTemp: 22 },
-    { day: "Saturday", icon: "/images/Group2.png", highTemp: 29, lowTemp: 22 },
-    { day: "Sunday", icon: "/images/Group2.png", highTemp: 29, lowTemp: 22 },
-  ];
+  // Extract hourly and daily data from forecast
+  const hourlyData = forecast?.list?.slice(0, 8).map((item: any) => ({
+    time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+    icon: getWeatherIcon(item.weather[0].main, item.main.temp),
+    temperature: Math.round(item.main.temp)
+  })) || [];
+
+  const dailyData = forecast?.list
+    ?.filter((_: any, index: number) => index % 8 === 0)
+    .slice(0, 7)
+    .map((item: any) => ({
+      day: new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' }),
+      icon: getWeatherIcon(item.weather[0].main, item.main.temp),
+      highTemp: Math.round(item.main.temp_max),
+      lowTemp: Math.round(item.main.temp_min)
+    })) || [];
 
   return (
     <aside className={styles.rightSidebar}>
       <div className={styles.container}>
         <WeatherCard
-          city="Tbilisi"
-          date="Today . 12 March"
-          temperature={32}
-          weatherIcon="/images/Group2.png"
+          city={selectedCity}
+          date={new Date().toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+          })}
+          temperature={Math.round(weather.main.temp)}
+          weatherIcon={getWeatherIcon(weather.weather[0].main, weather.main.temp)}
         />
 
         <HourlyForecast items={hourlyData} />
