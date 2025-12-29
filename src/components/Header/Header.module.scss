@@ -6,8 +6,11 @@
     display: flex;
     height: 60px;
     align-items: center;
+    justify-content: space-between;
+    gap: 20px;
     padding-top: 50px;
     padding-left: 25px;
+    padding-right: 25px;
     
     @media (max-width: $breakpoint-lg) {
         padding-top: 30px;
@@ -26,8 +29,37 @@
 .searchPlaceholder{
     width: 900px;
     max-width: 100%;
+    flex: 1;
     
     @media (max-width: $breakpoint-lg) {
         width: 100%;
+    }
+}
+
+.sidebarToggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: $color-text;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    @media (max-width: $breakpoint-md) {
+        padding: 10px 12px;
     }
 }

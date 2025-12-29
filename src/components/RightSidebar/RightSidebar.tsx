@@ -4,6 +4,7 @@ import { WeatherCard, HourlyForecast, DailyForecast } from "../Cards";
 import { useStore } from "@/store/useStore";
 import { getWeatherIcon } from "@/utils";
 import type { HourlyItem, DailyItem, ForecastItem } from "@/types";
+import { IoCloudOutline } from "react-icons/io5";
 
 export default function RightSidebar() {
    
@@ -17,8 +18,24 @@ export default function RightSidebar() {
   const weather = weatherCache[selectedCity || ''];
   const forecast = forecastCache[selectedCity || ''];
   
-  if(!isRightSidebarOpen || !selectedCity || !weather) {
+  if(!isRightSidebarOpen) {
     return null;
+  }
+
+  if(!selectedCity || !weather) {
+    return (
+      <aside className={styles.rightSidebar}>
+        <div className={styles.emptyState}>
+          <div className={styles.emptyIcon}>
+            <IoCloudOutline />
+          </div>
+          <h2 className={styles.emptyTitle}>No City Selected</h2>
+          <p className={styles.emptyDescription}>
+            Select a city from the suggestions or search to see detailed weather information
+          </p>
+        </div>
+      </aside>
+    );
   }
 
   // Extract hourly and daily data from forecast

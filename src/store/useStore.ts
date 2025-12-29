@@ -36,7 +36,7 @@ export const useStore = create<StoreState>()(persist((set) => ({
   selectedCity: null,
   currentWeather: null,
   forecast: null,
-  isRightSidebarOpen: false,
+  isRightSidebarOpen: true,
   weatherCache: {},
   forecastCache: {},
 
