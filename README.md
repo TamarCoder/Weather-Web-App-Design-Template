@@ -1,269 +1,358 @@
-# Weather Application / ამინდის აპლიკაცია
+<div align="center">
 
-[🇬🇧 English](#english) | [🇬🇪 ქართული](#georgian)
+# 🌦️ Weather Dashboard
+
+### Modern Weather Application Built with Next.js & TypeScript
+
+[![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Zustand](https://img.shields.io/badge/Zustand-State-orange?style=for-the-badge)](https://zustand-demo.pmnd.rs/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+**A beautiful, responsive weather application featuring real-time data, forecasts, and dynamic UI elements**
+
+[Live Demo](#) · [Report Bug](../../issues) · [Request Feature](../../issues)
+
+![Weather Dashboard Preview](https://via.placeholder.com/800x400/1a1a2e/16c784?text=Weather+Dashboard+Preview)
+
+</div>
 
 ---
 
-## <a name="english"></a>🇬🇧 English
+## ✨ Features
 
-### Project Description
-A modern weather application built with Next.js, using OpenWeatherMap API for real-time weather data.
+<table>
+<tr>
+<td width="50%">
 
-### Features
-- 🔍 **City Search** - Search weather for any city
-- 📍 **Recent Searches** - History of last 5 searched cities
-- 🌤️ **Current Weather** - Temperature and weather conditions
-- 📊 **Hourly Forecast** - 8-hour detailed forecast
-- 📅 **7-Day Forecast** - Weekly weather forecast
-- 🎨 **Dynamic Icons** - Weather and temperature-based icons
-- 🌈 **Gradients** - Weather condition-based background colors
-- 💡 **Suggestions** - Random city suggestions
+### 🔍 Smart Search
+- Instant city weather lookup
+- Auto-save search history
+- Recent searches quick access
 
-### Technologies
-- **Framework:** Next.js 16.1.1 (App Router)
-- **Language:** TypeScript
-- **Styling:** SCSS Modules
-- **State Management:** Zustand
-- **HTTP Client:** Axios
-- **Icons:** Lucide React, React Icons
-- **API:** OpenWeatherMap
+### 🌡️ Real-Time Data
+- Current temperature & conditions
+- Humidity & wind speed
+- Feels-like temperature
 
-### Directory Structure
+### 📊 Detailed Forecasts
+- 8-hour detailed predictions
+- 7-day weather outlook
+- Hour-by-hour breakdown
+
+</td>
+<td width="50%">
+
+### 🎨 Dynamic UI
+- Weather-based color gradients
+- Context-aware icons
+- Smooth animations
+
+### ⚡ Performance
+- Intelligent caching system
+- Optimized API calls
+- Lightning-fast responses
+
+### 📱 Responsive Design
+- Mobile-first approach
+- Tablet & desktop optimized
+- Touch-friendly interface
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Tech Stack
+
+<div align="center">
+
+| Category | Technology | Purpose |
+|----------|-----------|---------|
+| **Framework** | ![Next.js](https://img.shields.io/badge/-Next.js-000?logo=next.js) | React framework with SSR |
+| **Language** | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) | Type-safe development |
+| **Styling** | ![SCSS](https://img.shields.io/badge/-SCSS-CC6699?logo=sass&logoColor=white) | Modular CSS with variables |
+| **State** | ![Zustand](https://img.shields.io/badge/-Zustand-orange) | Lightweight state management |
+| **HTTP** | ![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios) | Promise-based HTTP client |
+| **API** | OpenWeatherMap | Weather data provider |
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<details>
+<summary>Click to expand</summary>
+
+### Main Dashboard
+![Main Dashboard](https://via.placeholder.com/800x500/1a1a2e/16c784?text=Main+Dashboard)
+
+### City Search
+![Search Feature](https://via.placeholder.com/800x500/1a1a2e/16c784?text=City+Search)
+
+### Weather Details
+![Weather Details](https://via.placeholder.com/800x500/1a1a2e/16c784?text=Weather+Details)
+
+</details>
+
+---
+
+## 🏗️ Project Structure
+
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
-├── components/            # React components
-│   ├── Cards/            # Card components
-│   │   ├── DailyForecast/
-│   │   ├── HourlyForecast/
-│   │   ├── MoreSuggestions/
-│   │   ├── RecentlySearch/
-│   │   └── WeatherCard/
-│   ├── Header/           # Header component (Search)
-│   ├── LeftSidebar/      # Left Sidebar
-│   ├── MainContent/      # Main content
-│   ├── RightSidebar/     # Right Sidebar (details)
-│   └── UI/               # UI components
-├── constants/            # Constants
-├── hooks/                # Custom React Hooks
-├── services/             # API services
-├── store/                # Zustand Store
-├── styles/               # Global styles
-├── types/                # TypeScript types
-└── utils/                # Utility functions
+├── 📂 app/                    # Next.js App Router
+│   ├── layout.tsx            # Root layout
+│   └── page.tsx              # Home page
+│
+├── 📂 components/            # React Components
+│   ├── 📂 Cards/            # Weather Cards
+│   │   ├── DailyForecast/   # 7-day forecast
+│   │   ├── HourlyForecast/  # Hourly predictions
+│   │   ├── MoreSuggestions/ # City suggestions
+│   │   ├── RecentlySearch/  # Search history
+│   │   └── WeatherCard/     # Main weather display
+│   ├── 📂 Header/           # Search header
+│   ├── 📂 LeftSidebar/      # Navigation sidebar
+│   ├── 📂 MainContent/      # Main content area
+│   ├── 📂 RightSidebar/     # Weather details
+│   └── 📂 UI/               # Reusable UI components
+│
+├── 📂 constants/            # App constants
+├── 📂 hooks/                # Custom React hooks
+├── 📂 services/             # API services
+├── 📂 store/                # Zustand store
+├── 📂 styles/               # Global styles
+├── 📂 types/                # TypeScript types
+└── 📂 utils/                # Utility functions
 ```
 
-### Getting Started
+---
 
-#### 1. Installation
+## 🚦 Getting Started
+
+### Prerequisites
+
+- Node.js 18.0 or higher
+- npm or yarn package manager
+- OpenWeatherMap API key ([Get one here](https://openweathermap.org/api))
+
+### Installation
+
+1️⃣ **Clone the repository**
+```bash
+git clone https://github.com/TamarCoder/Weather-Web-App-Design-Template.git
+cd Weather-Web-App-Design-Template
+```
+
+2️⃣ **Install dependencies**
 ```bash
 npm install
 # or
 yarn install
 ```
 
-#### 2. Environment Variables
-Create `.env.local` file:
+3️⃣ **Set up environment variables**
+
+Create a `.env.local` file in the root directory:
 ```env
 NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
 ```
 
-To get OpenWeatherMap API Key:
-1. Go to [OpenWeatherMap](https://openweathermap.org/)
-2. Sign up
-3. Navigate to API Keys section
-4. Copy your API Key
+> 💡 **Tip:** Get your free API key from [OpenWeatherMap](https://openweathermap.org/api)
 
-#### 3. Run Development Server
+4️⃣ **Start development server**
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-Application will open at [http://localhost:3000](http://localhost:3000)
+5️⃣ **Open your browser**
 
-#### 4. Build for Production
-```bash
-npm run build
-npm run start
-```
-
-### Component Documentation
-Each folder contains a `README.md` file with detailed explanations:
-- [`src/services/README.md`](src/services/README.md) - API services documentation
-- [`src/hooks/README.md`](src/hooks/README.md) - Custom hooks documentation
-- [`src/store/README.md`](src/store/README.md) - Zustand store documentation
-- [`src/utils/README.md`](src/utils/README.md) - Utility functions documentation
-- [`src/constants/README.md`](src/constants/README.md) - Constants documentation
-
-### Main Functionality Flow
-
-#### City Search:
-1. User enters city in Header
-2. `useWeather` hook calls `fetchWeather()`
-3. Data is stored in `weatherCache`
-4. City is added to `recentCities`
-5. RecentlySearch component updates
-
-#### Card Click:
-1. User clicks on RecentlySearch card
-2. `setSelectedCity()` - selects city
-3. `toggleRightSidebar()` - opens sidebar
-4. `fetchForecast()` - fetches forecast
-5. RightSidebar shows detailed information
-
-### Scripts
-```bash
-npm run dev       # Start development server
-npm run build     # Build for production
-npm run start     # Start production server
-npm run lint      # Run ESLint
-```
-
-### Future Improvements
-- [ ] localStorage persistence (recent searches)
-- [ ] Geolocation support
-- [ ] Dark/Light mode toggle
-- [ ] Weather alerts
-- [ ] Multiple language support
-- [ ] PWA support
-- [ ] Unit tests
-
-### License
-MIT
+Navigate to [http://localhost:3000](http://localhost:3000) 🎉
 
 ---
 
-## <a name="georgian"></a>🇬🇪 ქართული
+## 📖 Documentation
 
-### პროექტის აღწერა
-თანამედროვე ამინდის აპლიკაცია Next.js-ზე აგებული, რომელიც იყენებს OpenWeatherMap API-ს რეალურ-დროის ამინდის მონაცემების მოსაძიებად.
+Detailed documentation is available for each module:
 
-### ფუნქციონალი
-- 🔍 **ქალაქის ძებნა** - ნებისმიერი ქალაქის ამინდის ძიება
-- 📍 **ბოლო ძებნები** - ბოლო 5 მოძებნილი ქალაქის ისტორია
-- 🌤️ **მიმდინარე ამინდი** - ტემპერატურა და ამინდის პირობები
-- 📊 **საათობრივი პროგნოზი** - 8-საათიანი დეტალური პროგნოზი
-- 📅 **7-დღიანი პროგნოზი** - კვირის ამინდის პროგნოზი
-- 🎨 **დინამიური აიქონები** - ამინდისა და ტემპერატურის შესაბამისი აიქონები
-- 🌈 **გრადიენტები** - ამინდის პირობებზე დაფუძნებული ფონის ფერები
-- 💡 **შემოთავაზებები** - რენდომული ქალაქების შემოთავაზება
+- 📘 [**Services**](src/services/README.md) - API integration guide
+- 📗 [**Hooks**](src/hooks/README.md) - Custom hooks documentation
+- 📙 [**Store**](src/store/README.md) - State management guide
+- 📕 [**Utils**](src/utils/README.md) - Utility functions
+- 📔 [**Constants**](src/constants/README.md) - App constants
 
-### ტექნოლოგიები
-- **Framework:** Next.js 16.1.1 (App Router)
-- **ენა:** TypeScript
-- **სტილები:** SCSS Modules
-- **State Management:** Zustand
-- **HTTP Client:** Axios
-- **აიქონები:** Lucide React, React Icons
-- **API:** OpenWeatherMap
+---
 
-### დირექტორიის სტრუქტურა
-```
-src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # მთავარი გვერდი
-├── components/            # React კომპონენტები
-│   ├── Cards/            # ბარათის კომპონენტები
-│   │   ├── DailyForecast/
-│   │   ├── HourlyForecast/
-│   │   ├── MoreSuggestions/
-│   │   ├── RecentlySearch/
-│   │   └── WeatherCard/
-│   ├── Header/           # Header კომპონენტი (ძებნა)
-│   ├── LeftSidebar/      # მარცხენა Sidebar
-│   ├── MainContent/      # მთავარი კონტენტი
-│   ├── RightSidebar/     # მარჯვენა Sidebar (დეტალები)
-│   └── UI/               # UI კომპონენტები
-├── constants/            # კონსტანტები
-├── hooks/                # Custom React Hooks
-├── services/             # API სერვისები
-├── store/                # Zustand Store
-├── styles/               # გლობალური სტილები
-├── types/                # TypeScript ტიპები
-└── utils/                # Utility ფუნქციები
+## 🔄 How It Works
+
+### City Search Flow
+```mermaid
+graph LR
+    A[User Input] --> B[Header Component]
+    B --> C[useWeather Hook]
+    C --> D[Weather API]
+    D --> E[weatherCache]
+    E --> F[Display Results]
+    E --> G[Recent Cities]
 ```
 
-### დაწყება
+### Architecture Overview
 
-#### 1. დაინსტალირება
-```bash
-npm install
-# ან
-yarn install
+1. **User searches** for a city in the Header component
+2. **useWeather hook** fetches data from OpenWeatherMap API
+3. **Data is cached** in Zustand store to prevent redundant API calls
+4. **City is added** to recent searches (max 5)
+5. **Components auto-update** with new weather data
+
+---
+
+## 🎯 Key Features Explained
+
+### Weather Caching System
+- Stores weather data locally to reduce API calls
+- Improves app performance and user experience
+- Automatic cache management
+
+### Dynamic Icons & Gradients
+- Weather icons change based on conditions and temperature
+- Background gradients adapt to current weather
+- Smooth transitions between states
+
+### Smart Suggestions
+- Random selection of 3 cities on each page load
+- Pre-fetches weather data for instant display
+- Showcases weather around the world
+
+---
+
+## 🛠️ Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 🌟 API Integration
+
+This app uses the [OpenWeatherMap API](https://openweathermap.org/api) to fetch:
+
+- **Current Weather** - Real-time conditions for any city
+- **5-Day Forecast** - 3-hour interval predictions
+- **Weather Icons** - Condition-specific imagery
+
+### API Endpoints Used
+
+```typescript
+// Current weather
+GET /weather?q={city}&appid={API_KEY}&units=metric
+
+// 5-day forecast
+GET /forecast?q={city}&appid={API_KEY}&units=metric
+
+// Coordinates-based weather
+GET /weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric
 ```
 
-#### 2. Environment Variables
-შექმენი `.env.local` ფაილი:
-```env
-NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
+---
+
+## 🎨 Customization
+
+### Adding New Weather Icons
+
+1. Add icon file to `public/images/`
+2. Update `src/utils/weatherIcons.ts`:
+
+```typescript
+export const getWeatherIcon = (weatherMain: string, temp: number) => {
+  // Add your custom logic
+  return '/images/your-icon.png';
+};
 ```
 
-OpenWeatherMap API Key მისაღებად:
-1. გადადი [OpenWeatherMap](https://openweathermap.org/)-ზე
-2. დარეგისტრირდი
-3. გადადი API Keys სექციაში
-4. დააკოპირე API Key
+### Changing Color Gradients
 
-#### 3. Development Server-ის გაშვება
-```bash
-npm run dev
-# ან
-yarn dev
+Edit gradients in `src/utils/weatherIcons.ts`:
+
+```typescript
+export const getWeatherGradient = (weatherMain: string, temp: number) => {
+  return 'linear-gradient(135deg, #yourcolor1 0%, #yourcolor2 100%)';
+};
 ```
 
-აპლიკაცია გაიხსნება [http://localhost:3000](http://localhost:3000)-ზე
+---
 
-#### 4. Production Build
-```bash
-npm run build
-npm run start
-```
+## 🐛 Known Issues
 
-### კომპონენტების დოკუმენტაცია
-თითოეული ფოლდერი შეიცავს `README.md` ფაილს დეტალური ახსნებით:
-- [`src/services/README.md`](src/services/README.md) - API სერვისების დოკუმენტაცია
-- [`src/hooks/README.md`](src/hooks/README.md) - Custom hooks-ის დოკუმენტაცია
-- [`src/store/README.md`](src/store/README.md) - Zustand store-ის დოკუმენტაცია
-- [`src/utils/README.md`](src/utils/README.md) - Utility ფუნქციების დოკუმენტაცია
-- [`src/constants/README.md`](src/constants/README.md) - კონსტანტების დოკუმენტაცია
+- [ ] Forecast data updates every 3 hours (API limitation)
+- [ ] Some cities may have multiple matches (use specific names)
 
-### ძირითადი ფუნქციონალის ნაკადი
+---
 
-#### ქალაქის ძებნა:
-1. User შეიყვანს ქალაქს Header-ში
-2. `useWeather` hook იძახებს `fetchWeather()`-ს
-3. მონაცემები ინახება `weatherCache`-ში
-4. ქალაქი ემატება `recentCities`-ში
-5. RecentlySearch კომპონენტი განახლდება
+## 🗺️ Roadmap
 
-#### ბარათზე დაწკაპუნება:
-1. User დააჭერს RecentlySearch-ის ბარათს
-2. `setSelectedCity()` - იყენებს ქალაქს
-3. `toggleRightSidebar()` - ხსნის sidebar-ს
-4. `fetchForecast()` - იღებს პროგნოზს
-5. RightSidebar აჩვენებს დეტალურ ინფორმაციას
+- [ ] **localStorage** - Persist recent searches
+- [ ] **Geolocation** - Auto-detect user's location
+- [ ] **Dark/Light Mode** - Theme toggle
+- [ ] **Weather Alerts** - Severe weather notifications
+- [ ] **Multiple Languages** - i18n support
+- [ ] **PWA Support** - Offline functionality
+- [ ] **Unit Tests** - Comprehensive test coverage
+- [ ] **Animations** - Enhanced UI transitions
 
-### ბრძანებები
-```bash
-npm run dev       # Development server-ის გაშვება
-npm run build     # Production build
-npm run start     # Production server-ის გაშვება
-npm run lint      # ESLint-ის გაშვება
-```
+---
 
-### სამომავლო გაუმჯობესებები
-- [ ] localStorage persistence (recent searches)
-- [ ] Geolocation მხარდაჭერა
-- [ ] Dark/Light mode toggle
-- [ ] ამინდის გაფრთხილებები
-- [ ] მრავალენოვანი მხარდაჭერა
-- [ ] PWA მხარდაჭერა
-- [ ] Unit ტესტები
+## 🤝 Contributing
 
-### ლიცენზია
-MIT
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Tamar Khuskivadze**
+
+- GitHub: [@TamarCoder](https://github.com/TamarCoder)
+- Email: [your.email@example.com](mailto:your.email@example.com)
+
+---
+
+## 🙏 Acknowledgments
+
+- [OpenWeatherMap](https://openweathermap.org/) for the weather API
+- [Next.js](https://nextjs.org/) team for the amazing framework
+- [Zustand](https://zustand-demo.pmnd.rs/) for simple state management
+- [Lucide Icons](https://lucide.dev/) for beautiful icons
+
+---
+
+<div align="center">
+
+### ⭐ Star this repo if you found it helpful!
+
+Made with ❤️ by [Tamar Khuskivadze](https://github.com/TamarCoder)
+
+[Back to Top ⬆️](#-weather-dashboard)
+
+</div>
