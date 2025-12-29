@@ -1,12 +1,10 @@
-'use client'
+"use client";
 import React, { useState } from "react";
-import styles from "./Input.module.scss"
+import styles from "./Input.module.scss";
 import { FieldValues, Path } from "react-hook-form";
 import { InputProps } from "@/types/input.type";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-
- 
 export const Input = <TFormValues extends FieldValues = FieldValues>({
   type,
   name,
@@ -21,17 +19,17 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
   value,
   onChange,
   onEnter,
+  "aria-label": ariaLabel,
+  "aria-describedby": ariaDescribedby,
 }: InputProps<TFormValues>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const inputType = type === "password" && showPassword ? "text" : type;
   const isPasswordField = type === "password";
-  
+
   const hasLeftIcon = icon && iconPosition === "left";
   const hasRightIcon = (icon && iconPosition === "right") || isPasswordField;
-  
-  const inputFieldClasses = `${styles.inputField} ${
-    className ? styles[className] : ""
-  } ${
+
+  const inputFieldClasses = `${styles.inputField} ${className ? styles[className] : ""} ${
     error ? styles.error : ""
   } ${disabled ? styles.disabled : ""} ${
     hasLeftIcon ? styles.withLeftIcon : ""
@@ -49,9 +47,7 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
         </label>
       )}
       <div className={styles.inputItem}>
-        {icon && iconPosition === "left" && (
-          <span className={styles.leftSide}>{icon}</span>
-        )}
+        {icon && iconPosition === "left" && <span className={styles.leftSide}>{icon}</span>}
         <input
           id={name}
           value={value}
@@ -61,10 +57,13 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
           className={inputFieldClasses}
           onChange={onChange}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && onEnter) {
+            if (e.key === "Enter" && onEnter) {
               onEnter();
             }
           }}
+          aria-label={ariaLabel}
+          aria-describedby={error ? `${name}-error` : ariaDescribedby}
+          aria-invalid={!!error}
           {...(register && register(name as Path<TFormValues>))}
         />
         {icon && iconPosition === "right" && !isPasswordField && (
@@ -83,10 +82,14 @@ export const Input = <TFormValues extends FieldValues = FieldValues>({
             ) : (
               <AiOutlineEyeInvisible className={styles.icon} />
             )}
-          </button>  
+          </button>
         )}
       </div>
-      {error && <div className={styles.errorMessage}>{error}</div>}
+      {error && (
+        <div className={styles.errorMessage} id={`${name}-error`} role="alert">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

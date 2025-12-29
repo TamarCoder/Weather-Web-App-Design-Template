@@ -1,7 +1,7 @@
- import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { UseFormRegister, FieldValues } from "react-hook-form";
 
 export interface InputProps<TFormValues extends FieldValues = FieldValues> {
-  type: 'text' | 'password' | 'email' |'textarea' | 'search';
+  type: "text" | "password" | "email" | "textarea" | "search";
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onEnter?: () => void;
@@ -13,5 +13,7 @@ export interface InputProps<TFormValues extends FieldValues = FieldValues> {
   register?: UseFormRegister<TFormValues>;
   className?: string;
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
+  "aria-label"?: string;
+  "aria-describedby"?: string;
 }

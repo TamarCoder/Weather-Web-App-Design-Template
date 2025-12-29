@@ -10,11 +10,7 @@
   align-items: center;
   gap: 24px;
   padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(34, 45, 61, 0.4) 0%,
-    rgba(34, 45, 61, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(34, 45, 61, 0.4) 0%, rgba(34, 45, 61, 0.1) 100%);
   border-radius: 16px;
   box-shadow: $shadow-md;
   transition: $transition-normal;

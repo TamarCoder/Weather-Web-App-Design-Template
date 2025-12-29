@@ -1,33 +1,40 @@
-/**
- * BUTTON COMPONENT
- * 
- * რას უნდა შეიცავდეს:
- * - Reusable button component
- * - Multiple variants (primary, secondary, outline, ghost)
- * - Multiple sizes (sm, md, lg)
- * - Loading state
- * - Icon support (left/right)
- * 
- * რას აკეთებს:
- * - ღილაკების უნიფიცირება მთელ აპში
- * - SCSS სტილებთან ინტეგრაცია (.btn, .btn-primary, .btn-secondary)
- * - Disabled, loading states მართვა
- * - Click handler გამოძახება
- * 
- * სად იმპორტდება:
- * - ყველგან სადაც ღილაკი გჭირდება
- * - SearchCity, Header, WeatherCard, etc.
- * 
- * რა props უნდა მიიღოს:
- * - variant: 'primary' | 'secondary' | 'outline' | 'ghost'
- * - size: 'sm' | 'md' | 'lg'
- * - isLoading: boolean
- * - disabled: boolean
- * - icon: ReactNode (optional)
- * - iconPosition: 'left' | 'right'
- * - onClick: () => void
- * - children: ReactNode (ღილაკის ტექსტი)
- * 
- * რა icons დაგჭირდება:
- * - lucide-react: Loader2 (loading spinner)
- */
+import React from "react";
+import styles from "./Button.module.scss";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  isLoading?: boolean;
+  icon?: React.ReactNode;
+  iconPosition?: "left" | "right";
+  children: React.ReactNode;
+}
+
+export default function Button({
+  variant = "primary",
+  size = "md",
+  isLoading = false,
+  icon,
+  iconPosition = "left",
+  children,
+  className = "",
+  disabled,
+  ...props
+}: ButtonProps) {
+  const buttonClasses = `${styles.btn} ${styles[`btn-${variant}`]} ${styles[`btn-${size}`]} ${
+    isLoading ? styles.loading : ""
+  } ${className}`;
+
+  return (
+    <button className={buttonClasses} disabled={disabled || isLoading} {...props}>
+      {isLoading && <span className={styles.loader}></span>}
+      {!isLoading && icon && iconPosition === "left" && (
+        <span className={styles.iconLeft}>{icon}</span>
+      )}
+      <span>{children}</span>
+      {!isLoading && icon && iconPosition === "right" && (
+        <span className={styles.iconRight}>{icon}</span>
+      )}
+    </button>
+  );
+}

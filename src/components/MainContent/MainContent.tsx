@@ -1,10 +1,19 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import styles from "./MainContent.module.scss";
-import { RecentlySearch, MoreSuggestions } from "../Cards";
 import { SUGGESTED_CITIES } from "@/constants/cities";
 import { useStore } from "@/store/useStore";
 import { useWeather } from "@/hooks/useWeather";
+
+// Code splitting - lazy load components
+const RecentlySearch = dynamic(() => import("../Cards/RecentlySearch/RecentlySearch"), {
+  ssr: true,
+});
+
+const MoreSuggestions = dynamic(() => import("../Cards/MoreSuggestions/MoreSuggestions"), {
+  ssr: true,
+});
 
 export default function MainContent() {
   const [suggestedCities, setSuggestedCities] = useState<string[]>([]);
@@ -27,7 +36,7 @@ export default function MainContent() {
     const fetchSuggestedCities = async () => {
       const cities = getRandomCities(3);
       setSuggestedCities(cities);
-      
+
       // Fetch weather for each city and cache it
       for (const city of cities) {
         const data = await fetchWeather(city);
@@ -36,7 +45,7 @@ export default function MainContent() {
         }
       }
     };
-    
+
     fetchSuggestedCities();
   }, []);
 
@@ -44,12 +53,12 @@ export default function MainContent() {
   const handleSuggestionClick = async (city: string) => {
     setSelectedCity(city);
     addRecentCity(city);
-    
+
     // Only toggle if sidebar is closed
     if (!isRightSidebarOpen) {
       toggleRightSidebar();
     }
-    
+
     // If not in cache, fetch it
     if (!weatherCache[city]) {
       const data = await fetchWeather(city);
@@ -62,7 +71,7 @@ export default function MainContent() {
   return (
     <div className={styles.mainContent}>
       <RecentlySearch />
-      <MoreSuggestions 
+      <MoreSuggestions
         cities={suggestedCities}
         weatherCache={weatherCache}
         onCityClick={handleSuggestionClick}

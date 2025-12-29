@@ -33,16 +33,10 @@ export default function HourlyForecast({ items, isLoading = false }: HourlyForec
           <Fragment key={`hourly-${index}`}>
             <div className={styles.hourlyItem}>
               <p className={styles.hourTime}>{item.time}</p>
-              <img
-                src={item.icon}
-                alt="Weather icon"
-                className={styles.hourlyIcon}
-              />
+              <img src={item.icon} alt="Weather icon" className={styles.hourlyIcon} />
               <p className={styles.hourTemp}>{item.temperature}°</p>
             </div>
-            {index < items.length - 1 && (
-              <div className={styles.divider}></div>
-            )}
+            {index < items.length - 1 && <div className={styles.divider}></div>}
           </Fragment>
         ))}
       </div>

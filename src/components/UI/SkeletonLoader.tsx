@@ -5,11 +5,7 @@ interface SkeletonLoaderProps {
   count?: number;
 }
 
-export default function SkeletonLoader({ 
-  variant = "card", 
-  count = 1 
-}: SkeletonLoaderProps) {
-  
+export default function SkeletonLoader({ variant = "card", count = 1 }: SkeletonLoaderProps) {
   const renderSkeleton = () => {
     switch (variant) {
       case "card":
@@ -26,7 +22,7 @@ export default function SkeletonLoader({
             </div>
           </div>
         );
-      
+
       case "hourly":
         return (
           <div className={styles.skeletonHourly}>
@@ -35,7 +31,7 @@ export default function SkeletonLoader({
             <div className={styles.skeletonTemp}></div>
           </div>
         );
-      
+
       case "daily":
         return (
           <div className={styles.skeletonDaily}>
@@ -44,7 +40,7 @@ export default function SkeletonLoader({
             <div className={styles.skeletonTempRange}></div>
           </div>
         );
-      
+
       case "search":
         return (
           <div className={styles.skeletonSearch}>
@@ -56,7 +52,7 @@ export default function SkeletonLoader({
             <div className={styles.skeletonTempSmall}></div>
           </div>
         );
-      
+
       default:
         return null;
     }

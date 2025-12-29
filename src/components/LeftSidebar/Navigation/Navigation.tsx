@@ -19,7 +19,7 @@ export default function Navigation() {
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeItem === item.id;
-          
+
           return (
             <li
               key={item.id}

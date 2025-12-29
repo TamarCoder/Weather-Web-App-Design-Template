@@ -3,29 +3,35 @@
 ## ქართული
 
 ### მიზანი
+
 React custom hook ამინდის მონაცემების მართვისთვის და API-სთან მუშაობისთვის.
 
 ### State-ები
 
 #### `weather: WeatherData | null`
+
 - მიმდინარე ამინდის მონაცემები
 - `null` თუ ჯერ არ არის ჩატვირთული
 
 #### `forecast: ForecastData | null`
+
 - 5-დღიანი პროგნოზის მონაცემები
 - `null` თუ ჯერ არ არის ჩატვირთული
 
 #### `isLoading: boolean`
+
 - `true` - მონაცემები იტვირთება
 - `false` - დასრულებულია ან არ არის დაწყებული
 
 #### `error: string | null`
+
 - შეცდომის შეტყობინება თუ რამე არასწორად წავიდა
 - `null` თუ შეცდომა არ არის
 
 ### ფუნქციები
 
 #### `fetchWeather(city: string)`
+
 - **აღწერა:** ასინქრონულად იღებს ქალაქის ამინდის მონაცემებს
 - **პარამეტრები:**
   - `city` - ქალაქის სახელი
@@ -37,6 +43,7 @@ React custom hook ამინდის მონაცემების მა
   - შეცდომის შემთხვევაში აყენებს error state-ს
 
 #### `fetchForecast(city: string)`
+
 - **აღწერა:** ასინქრონულად იღებს პროგნოზის მონაცემებს
 - **პარამეტრები:**
   - `city` - ქალაქის სახელი
@@ -50,14 +57,14 @@ React custom hook ამინდის მონაცემების მა
 ```typescript
 function MyComponent() {
   const { weather, forecast, isLoading, error, fetchWeather, fetchForecast } = useWeather();
-  
+
   useEffect(() => {
     fetchWeather("Tbilisi");
   }, []);
-  
+
   if (isLoading) return <Loader />;
   if (error) return <ErrorMessage text={error} />;
-  
+
   return (
     <div>
       <p>Temperature: {weather?.main.temp}°C</p>
@@ -67,11 +74,13 @@ function MyComponent() {
 ```
 
 ### სად გამოიყენება
+
 - `components/Header/Header.tsx` - search functionality
 - `components/MainContent/MainContent.tsx` - suggested cities
 - `components/Cards/RecentlySearch/RecentlySearch.tsx` - recent city cards
 
 ### დამოკიდებულებები
+
 - `services/weatherApi.ts` - API calls
 - `types/weather.types.ts` - TypeScript types
 
@@ -80,29 +89,35 @@ function MyComponent() {
 ## English
 
 ### Purpose
+
 React custom hook for managing weather data and API interactions.
 
 ### States
 
 #### `weather: WeatherData | null`
+
 - Current weather data
 - `null` if not yet loaded
 
 #### `forecast: ForecastData | null`
+
 - 5-day forecast data
 - `null` if not yet loaded
 
 #### `isLoading: boolean`
+
 - `true` - Data is being fetched
 - `false` - Completed or not started
 
 #### `error: string | null`
+
 - Error message if something went wrong
 - `null` if no error
 
 ### Functions
 
 #### `fetchWeather(city: string)`
+
 - **Description:** Asynchronously fetches weather data for a city
 - **Parameters:**
   - `city` - City name
@@ -114,6 +129,7 @@ React custom hook for managing weather data and API interactions.
   - On error, sets error state
 
 #### `fetchForecast(city: string)`
+
 - **Description:** Asynchronously fetches forecast data
 - **Parameters:**
   - `city` - City name
@@ -127,14 +143,14 @@ React custom hook for managing weather data and API interactions.
 ```typescript
 function MyComponent() {
   const { weather, forecast, isLoading, error, fetchWeather, fetchForecast } = useWeather();
-  
+
   useEffect(() => {
     fetchWeather("Tbilisi");
   }, []);
-  
+
   if (isLoading) return <Loader />;
   if (error) return <ErrorMessage text={error} />;
-  
+
   return (
     <div>
       <p>Temperature: {weather?.main.temp}°C</p>
@@ -144,10 +160,12 @@ function MyComponent() {
 ```
 
 ### Where it's used
+
 - `components/Header/Header.tsx` - search functionality
 - `components/MainContent/MainContent.tsx` - suggested cities
 - `components/Cards/RecentlySearch/RecentlySearch.tsx` - recent city cards
 
 ### Dependencies
+
 - `services/weatherApi.ts` - API calls
 - `types/weather.types.ts` - TypeScript types

@@ -31,11 +31,7 @@ export default function DailyForecast({ items, isLoading = false }: DailyForecas
         {items.map((item) => (
           <div key={item.day} className={styles.dailyItem}>
             <p className={styles.dayName}>{item.day}</p>
-            <img
-              src={item.icon}
-              alt="Weather icon"
-              className={styles.dailyIcon}
-            />
+            <img src={item.icon} alt="Weather icon" className={styles.dailyIcon} />
             <p className={styles.dailyTemp}>
               {item.highTemp}° / {item.lowTemp}°
             </p>

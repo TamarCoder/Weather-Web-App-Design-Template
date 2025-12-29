@@ -13,7 +13,7 @@ export function useWeather() {
     setForecast(null);
     setError(null);
     setIsLoading(true);
-    
+
     try {
       const weatherData = await getCurrentWeather(city);
       setWeather(weatherData);
@@ -26,13 +26,13 @@ export function useWeather() {
       setIsLoading(false);
     }
   };
-  
+
   const fetchForecast = async (city: string): Promise<ForecastData | null> => {
     setWeather(null);
     setForecast(null);
     setError(null);
     setIsLoading(true);
-    
+
     try {
       const forecastData = await getForecast(city);
       setForecast(forecastData);

@@ -34,11 +34,7 @@ export default function WeatherCard({
         </div>
       </div>
       <div className={styles.weatherIcon}>
-        <img
-          src={weatherIcon}
-          alt="Weather icon"
-          className={styles.weatherImage}
-        />
+        <img src={weatherIcon} alt="Weather icon" className={styles.weatherImage} />
       </div>
     </div>
   );

@@ -34,7 +34,7 @@
   &.error {
     border-color: $color-error !important;
   }
-  
+
   @media (max-width: $breakpoint-md) {
     height: 45px;
     font-size: $font-size-sm;

@@ -1,10 +1,11 @@
-@import './variables';
+@import "./variables";
+@import "./accessibility";
 
 // ===================================
 // Google Font Import - Inter
 // ===================================
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 // ===================================
 // Reset & Base Styles
@@ -52,7 +53,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.15);
   }
@@ -68,7 +69,12 @@ body {
 // Typography
 // ===================================
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
   color: $color-text;
@@ -143,7 +149,7 @@ button {
   font-weight: $font-weight-medium;
   border-radius: $border-radius-md;
   transition: all $transition-fast;
-  
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
@@ -153,16 +159,16 @@ button {
 .btn-primary {
   background-color: $color-primary;
   color: $color-text;
-  
+
   &:hover:not(:disabled) {
     background-color: $color-primary-hover;
     box-shadow: $shadow-md;
   }
-  
+
   &:active:not(:disabled) {
     background-color: $color-primary-active;
   }
-  
+
   &:disabled {
     background-color: $color-primary-disabled;
   }
@@ -171,16 +177,16 @@ button {
 .btn-secondary {
   background-color: $color-secondary;
   color: $color-text;
-  
+
   &:hover:not(:disabled) {
     background-color: $color-secondary-hover;
     box-shadow: $shadow-md;
   }
-  
+
   &:active:not(:disabled) {
     background-color: $color-secondary-active;
   }
-  
+
   &:disabled {
     background-color: $color-secondary-disabled;
   }
@@ -202,23 +208,23 @@ select {
   padding: $spacing-sm $spacing-md;
   width: 100%;
   transition: all $transition-fast;
-  
+
   &:focus {
     outline: none;
     border-color: $color-primary;
     box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
   }
-  
+
   &:hover:not(:disabled) {
     border-color: $color-primary-hover;
   }
-  
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
     background-color: rgba(255, 255, 255, 0.02);
   }
-  
+
   &::placeholder {
     color: $color-secondary;
   }
@@ -264,17 +270,41 @@ label {
   text-align: right;
 }
 
-.mt-sm { margin-top: $spacing-sm; }
-.mt-md { margin-top: $spacing-md; }
-.mt-lg { margin-top: $spacing-lg; }
-.mt-xl { margin-top: $spacing-xl; }
+.mt-sm {
+  margin-top: $spacing-sm;
+}
+.mt-md {
+  margin-top: $spacing-md;
+}
+.mt-lg {
+  margin-top: $spacing-lg;
+}
+.mt-xl {
+  margin-top: $spacing-xl;
+}
 
-.mb-sm { margin-bottom: $spacing-sm; }
-.mb-md { margin-bottom: $spacing-md; }
-.mb-lg { margin-bottom: $spacing-lg; }
-.mb-xl { margin-bottom: $spacing-xl; }
+.mb-sm {
+  margin-bottom: $spacing-sm;
+}
+.mb-md {
+  margin-bottom: $spacing-md;
+}
+.mb-lg {
+  margin-bottom: $spacing-lg;
+}
+.mb-xl {
+  margin-bottom: $spacing-xl;
+}
 
-.p-sm { padding: $spacing-sm; }
-.p-md { padding: $spacing-md; }
-.p-lg { padding: $spacing-lg; }
-.p-xl { padding: $spacing-xl; }
+.p-sm {
+  padding: $spacing-sm;
+}
+.p-md {
+  padding: $spacing-md;
+}
+.p-lg {
+  padding: $spacing-lg;
+}
+.p-xl {
+  padding: $spacing-xl;
+}

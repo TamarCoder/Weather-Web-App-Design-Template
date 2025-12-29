@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../styles/globals.scss";
-import styles from './layout.module.scss'
-import Header from '@/components/Header/Header'
-import LeftSidebar from '@/components/LeftSidebar/LeftSidebar'
-import RightSidebar from '@/components/RightSidebar/RightSidebar'
-import Footer from '@/components/Footer/Footer'
+import styles from "./layout.module.scss";
+import Header from "@/components/Header/Header";
+import LeftSidebar from "@/components/LeftSidebar/LeftSidebar";
+import RightSidebar from "@/components/RightSidebar/RightSidebar";
+import Footer from "@/components/Footer/Footer";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export const metadata: Metadata = {
   title: "Weather Dashboard | Real-time Weather Information",
@@ -17,6 +18,21 @@ export const metadata: Metadata = {
     description: "Real-time weather information and forecasts",
     type: "website",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#667eea",
 };
 
 /**
@@ -45,25 +61,25 @@ export const metadata: Metadata = {
  * 2. Uncomment კომპონენტები ქვემოთ
  */
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <div className={styles.layoutContainer}>
-          <LeftSidebar />
-          
-          <div className={styles.mainWrapper}>
-            <Header />
-            <main className={styles.mainContent}>{children}</main>
-            <Footer />
-          </div>
+        <ErrorBoundary>
+          <div className={styles.layoutContainer}>
+            <LeftSidebar />
 
-          <RightSidebar />
-        </div>
+            <div className={styles.mainWrapper}>
+              <Header />
+              <main className={styles.mainContent} id="main-content" role="main">
+                {children}
+              </main>
+              <Footer />
+            </div>
+
+            <RightSidebar />
+          </div>
+        </ErrorBoundary>
       </body>
     </html>
   );

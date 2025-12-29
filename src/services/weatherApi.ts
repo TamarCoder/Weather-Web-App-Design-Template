@@ -54,4 +54,3 @@ const getWeatherByCoordinates = async (lat: number, lon: number): Promise<Weathe
 };
 
 export { getCurrentWeather, getForecast, getWeatherByCoordinates };
- 
