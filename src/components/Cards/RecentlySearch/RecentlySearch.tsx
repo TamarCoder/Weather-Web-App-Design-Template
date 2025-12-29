@@ -1,10 +1,12 @@
 'use client'
+import { useEffect } from 'react';
 import { useStore } from "@/store/useStore";
 import styles from "./RecentlySearch.module.scss";
 import { SkeletonLoader } from "@/components/UI";
 import { useWeather } from "@/hooks/useWeather";
 import { IoSearch } from "react-icons/io5";
 import { getWeatherIcon, getWeatherGradient } from "@/utils";
+import { SUGGESTED_CITIES } from '@/constants/cities';
 
  
  
@@ -12,12 +14,33 @@ import { getWeatherIcon, getWeatherGradient } from "@/utils";
 export default function RecentlySearch() {
 
   const recentCities =  useStore((state) => state.recentCities);
+  const initializeRecentCities = useStore((state) => state.initializeRecentCities);
   const setSelectedCity = useStore((state) => state.setSelectedCity);
   const toggleRightSidebar = useStore((state) => state.toggleRightSidebar);
   const isRightSidebarOpen = useStore((state) => state.isRightSidebarOpen);
   const weatherCache = useStore((state) => state.weatherCache);
+  const setWeatherCache = useStore((state) => state.setWeatherCache);
   const setForecastCache = useStore((state) => state.setForecastCache);
   const { fetchWeather, fetchForecast, isLoading } = useWeather();
+
+  // პირველ ჩატვირთვაზე ინიციალიზაცია 2 რანდომ ქალაქით
+  useEffect(() => {
+    if (recentCities.length === 0) {
+      // აირჩიეთ 2 რანდომ ქალაქი
+      const shuffled = [...SUGGESTED_CITIES].sort(() => 0.5 - Math.random());
+      const randomCities = shuffled.slice(0, 2);
+      
+      initializeRecentCities(randomCities);
+      
+      // ჩავტვირთოთ მათი ამინდის ინფორმაცია
+      randomCities.forEach(async (city) => {
+        const weatherData = await fetchWeather(city);
+        if (weatherData) {
+          setWeatherCache(city, weatherData);
+        }
+      });
+    }
+  }, []);
 
   const handleCardClick = async (city: string) => {
     setSelectedCity(city);

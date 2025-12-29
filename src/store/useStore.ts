@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import type { WeatherData, ForecastData } from "@/types/weather.types";
 
 interface StoreState {
@@ -19,6 +20,7 @@ interface StoreState {
   
   // Actions
   addRecentCity: (city: string) => void;
+  initializeRecentCities: (cities: string[]) => void;
   setSelectedCity: (city: string | null) => void;
   toggleRightSidebar: () => void;
   setWeatherCache: (city: string, data: WeatherData) => void;
@@ -29,7 +31,7 @@ interface StoreState {
   setForecast: (forecast: any | null) => void;
 }
 
-export const useStore = create<StoreState>((set) => ({
+export const useStore = create<StoreState>()(persist((set) => ({
   recentCities: [],
   selectedCity: null,
   currentWeather: null,
@@ -44,6 +46,11 @@ export const useStore = create<StoreState>((set) => ({
         city,
         ...state.recentCities.filter((c) => c !== city),
       ].slice(0, 5),
+    })),
+
+  initializeRecentCities: (cities: string[]) =>
+    set(() => ({
+      recentCities: cities,
     })),
 
   setWeatherCache: (city: string, data: any) =>
@@ -67,4 +74,11 @@ export const useStore = create<StoreState>((set) => ({
 
   toggleRightSidebar: () =>
     set((state) => ({ isRightSidebarOpen: !state.isRightSidebarOpen })),
+}), {
+  name: 'weather-storage',
+  partialize: (state) => ({ 
+    recentCities: state.recentCities,
+    weatherCache: state.weatherCache,
+    forecastCache: state.forecastCache
+  }),
 }));
