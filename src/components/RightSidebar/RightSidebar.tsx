@@ -3,6 +3,7 @@ import styles from "./RightSidebar.module.scss";
 import { WeatherCard, HourlyForecast, DailyForecast } from "../Cards";
 import { useStore } from "@/store/useStore";
 import { getWeatherIcon } from "@/utils";
+import type { HourlyItem, DailyItem, ForecastItem } from "@/types";
 
 export default function RightSidebar() {
    
@@ -21,16 +22,16 @@ export default function RightSidebar() {
   }
 
   // Extract hourly and daily data from forecast
-  const hourlyData = forecast?.list?.slice(0, 8).map((item: any) => ({
+  const hourlyData: HourlyItem[] = forecast?.list?.slice(0, 8).map((item: ForecastItem) => ({
     time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
     icon: getWeatherIcon(item.weather[0].main, item.main.temp),
     temperature: Math.round(item.main.temp)
   })) || [];
 
-  const dailyData = forecast?.list
-    ?.filter((_: any, index: number) => index % 8 === 0)
+  const dailyData: DailyItem[] = forecast?.list
+    ?.filter((_: ForecastItem, index: number) => index % 8 === 0)
     .slice(0, 7)
-    .map((item: any) => ({
+    .map((item: ForecastItem) => ({
       day: new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' }),
       icon: getWeatherIcon(item.weather[0].main, item.main.temp),
       highTemp: Math.round(item.main.temp_max),

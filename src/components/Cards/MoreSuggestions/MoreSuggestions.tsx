@@ -2,10 +2,11 @@
 import styles from "./MoreSuggestions.module.scss";
 import { SkeletonLoader } from "@/components/UI";
 import { getWeatherIcon, getWeatherGradient } from "@/utils";
+import type { WeatherData } from "@/types";
 
 interface MoreSuggestionsProps {
   cities: string[];
-  weatherCache: Record<string, any>;
+  weatherCache: Record<string, WeatherData>;
   isLoading?: boolean;
   onCityClick?: (city: string) => void;
 }

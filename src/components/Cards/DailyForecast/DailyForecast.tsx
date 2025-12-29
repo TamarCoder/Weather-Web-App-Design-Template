@@ -1,12 +1,6 @@
 import styles from "./DailyForecast.module.scss";
 import { SkeletonLoader } from "@/components/UI";
-
-interface DailyItem {
-  day: string;
-  icon: string;
-  highTemp: number;
-  lowTemp: number;
-}
+import type { DailyItem } from "@/types";
 
 interface DailyForecastProps {
   items: DailyItem[];

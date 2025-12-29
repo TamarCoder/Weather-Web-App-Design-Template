@@ -1,12 +1,7 @@
 import { Fragment } from "react";
 import styles from "./HourlyForecast.module.scss";
 import { SkeletonLoader } from "@/components/UI";
-
-interface HourlyItem {
-  time: string;
-  icon: string;
-  temperature: number;
-}
+import type { HourlyItem } from "@/types";
 
 interface HourlyForecastProps {
   items: HourlyItem[];
