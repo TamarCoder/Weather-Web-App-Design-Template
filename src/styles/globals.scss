@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./accessibility";
+@use "./variables" as *;
+@use "./accessibility" as *;
 
 // ===================================
 // Google Font Import - Inter

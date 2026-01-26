@@ -4,7 +4,12 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    domains: ["openweathermap.org"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "openweathermap.org",
+      },
+    ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -12,7 +17,6 @@ const nextConfig = {
   },
 
   // Performance optimizations
-  swcMinify: true,
   compress: true,
 
   // Compiler optimizations
@@ -23,6 +27,11 @@ const nextConfig = {
   // Experimental features
   experimental: {
     optimizeCss: true,
+  },
+
+  // Turbopack configuration
+  turbopack: {
+    root: "/Users/tamarkhuskivadze/Desktop/Projects/Weather-Web-App-Design-Template",
   },
 
   // Security headers
